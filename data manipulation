@@ -1,0 +1,30 @@
+#Importing Library
+library(dplyr)
+
+#importing data set
+setwd("G:/Data_Set/Stock")
+
+HDFCLIFE = read.csv("HDFCLIFE.csv", na.strings = "null")
+NTPC = read.csv("NTPC.csv", na.strings = "null")
+POWERGRID = read.csv("POWERGRID.csv", na.strings = "null")
+
+#getting columns name
+names(HDFCLIFE)
+
+
+#creating columns market Cap
+HDFCLIFE$Marketcap = HDFCLIFE$Adj.Close*HDFCLIFE$Volume
+NTPC$Marketcap = NTPC$Adj.Close*NTPC$Volume
+POWERGRID$Marketcap = POWERGRID$Adj.Close*POWERGRID$Volume
+
+# select/ filtering the columns
+select(HDFCLIFE,Stock.Name, Adj.Close, Volume)
+select(NTPC,Stock.Name, Adj.Close, Volume)
+select(POWERGRID,Stock.Name, Adj.Close, Volume)
+
+#summary of the data
+mean(HDFCLIFE$Adj.Close, na.rm = TRUE)
+median(HDFCLIFE$Adj.Close, na.rm = TRUE)
+
+
+
